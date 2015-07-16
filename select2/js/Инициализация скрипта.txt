@@ -1,0 +1,7 @@
+/* Select2
+ ========================================================*/
+include('js/select2.min.js')
+include('js/select2.js')
+$(document).ready(function () {
+    $(".mark_auto").select2();
+});
