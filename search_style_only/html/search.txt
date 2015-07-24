@@ -1,0 +1,3 @@
+<form id="search2" class="search2">
+	<input type="text" name="footer-search" placeholder="Поиск"/>
+</form>

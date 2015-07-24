@@ -1,0 +1,26 @@
+.search {
+  position: relative;
+  border: none;
+  border-bottom: 1px solid $default;
+  padding: 5px;
+  width: -webkit-calc(100% - (5px * 2));
+  width: -moz-calc(100% - (5px * 2));
+  width: calc(100% - (5px *2));
+  &:before{
+    position: absolute;
+    content: '\f002';
+    font: 400 14px/14px $fa;
+    top: 50%;
+    right: 10px;
+    @include transform(translateY(-50%));
+    text-align: center;
+  }
+  input{
+    outline: none;
+    border: none;
+    width: 85%;
+    font: 400 14px/14px $default-font;
+    padding-left: 5px;
+    color: $default;
+  }
+}
