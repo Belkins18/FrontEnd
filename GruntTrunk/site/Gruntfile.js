@@ -1,7 +1,7 @@
 // Gruntfile.js
 
 // Вся конфигурация находится внутри этой функции
-module.exports = function(grunt) {
+module.exports = function (grunt) {
 
     // ===========================================================================
     // Конфигурация GRUNT ===========================================================
@@ -18,25 +18,66 @@ module.exports = function(grunt) {
             // после запуска задачи будет проверен Gruntfile.js и все файлы с расширением .js в папке src
             build: ['Gruntfile.js', 'js/**/*.js']
         },
+        /*JS concat*/
+        concat: {
+            dist: {
+                src: [
+                    'js/modernizr.js',
+                    'js/jquery.fancybox.pack.js',
+                    'js/jquery.formstyler.min.js',
+                    'js/jquery.js',
+                    'js/jquery-ui.js',
+                    'js/owl.carousel.min.js',
+                    'js/script.js'
+                ],
+                dest: 'js/debug.js'
+            }
+        },
+        /*Create JS min file*/
+        uglify: {
+            build: {
+                src: 'js/debug.js',
+                dest: 'production/js/production.js'
+            }
+        },
         /*Sass*/
         sass: {
-            develop: {
+            dev: {
                 options: {
                     style: 'expanded',
                     compass: true
                 },
-                files: {
-                    'css/develop/bootstrap.css': 'scss/bootstrap.scss'
-                }
+                files: [{
+                    expand: true,
+                    cwd: 'scss',
+                    src: ['bootstrap.scss', 'style.scss'],
+                    dest: 'css',
+                    ext: '.css'
+                }]
             },
-            production: {
+            prod: {
                 options: {
                     style: 'compressed',
                     compass: true
                 },
-                files: {
-                    'css/production/bootstrap.css': 'scss/bootstrap.scss'
-                }
+                files: [{
+                    expand: true,
+                    cwd: 'scss',
+                    src: ['bootstrap.scss', 'style.scss'],
+                    dest: 'production/css',
+                    ext: '.css'
+                }]
+            }
+        },
+        /*Conpressed images*/
+        imagemin: {
+            dynamic: {                             // Another target
+                files: [{
+                    expand: true,                  // Enable dynamic expansion
+                    cwd: 'images/',                // Src matches are relative to this path
+                    src: ['**/*.{png,jpg,gif}'],   // Actual patterns to match
+                    dest: 'production/images'      // Destination path prefix
+                }]
             }
         },
         uncss: {
@@ -51,8 +92,8 @@ module.exports = function(grunt) {
         /*Watch*/
         watch: {
             sass: {
-                files: 'scss/{,*/}*.{scss,sass}',
-                tasks: ['sass:develop']
+                files: 'scss/{,*/}*.{scss}',
+                tasks: ['sass:dev']
             }
         }
 
@@ -69,9 +110,12 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-uncss');
 
-    grunt.registerTask('sass', ['sass']);
-    grunt.registerTask('default', [
-        'sass:dev',
-        'watch'
-    ]);
+    grunt.registerTask('default', ['sass']);
+
+    grunt.registerTask('imgcompress', ['imagemin']);
+
+    grunt.registerTask('prod-js', ['concat', 'uglify']);
+    grunt.registerTask('debug-js', ['concat']);
+
+    grunt.registerTask('sass_compile', ['sass:dev', 'watch:sass']);
 };
