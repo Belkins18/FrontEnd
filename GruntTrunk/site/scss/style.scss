@@ -1,0 +1,336 @@
+@import "_mixins.scss";
+@import "_variables.scss";
+//Fonts
+@import url(//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css);
+@import url(//fonts.googleapis.com/css?family=Open+Sans:400,600,700,300,400italic,300italic,600italic,700italic,800italic);
+//@import "linecons.css";
+
+/*========================================================
+                      Main Styles
+=========================================================*/
+body {
+  background: $content-bg;
+  color: $default;
+  font: 300 12px/16px $default-font;
+  -webkit-text-size-adjust: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+h1, h2, h3, h4, h5, h6 {
+}
+
+h1, .h1 {
+
+}
+
+h2, .h2 {
+
+}
+
+h3, .h3 {
+
+}
+
+h4, .h4 {
+
+}
+
+h5, .h5 {
+
+}
+
+h6, .h6 {
+
+}
+
+p, .marked-list, .list {
+  a:hover {
+    text-decoration: underline;
+  }
+
+  .fa {
+    text-decoration: none;
+  }
+}
+
+time {
+  display: block;
+  color: $default;
+  font: 700 18px/18px $default-font;
+}
+
+a {
+  text-decoration: underline;
+  color: $white;
+  font-weight: 400;
+  cursor: pointer;
+  @include transition(0.4s ease all);
+  &:hover {
+    color: $white;
+    text-decoration: none;
+  }
+  &:focus {
+    outline: none;
+  }
+  &:active {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+a[href^="tel:"],
+a[href^="callto:"] {
+  color: inherit;
+  text-decoration: none;
+}
+
+.fa {
+  line-height: inherit;
+}
+
+[class*='fa-'] {
+  &:before {
+    font-weight: 400;
+    font-family: $fa;
+  }
+}
+
+.page {
+  overflow: hidden;
+
+  .lt-ie9 & {
+    min-width: 1200px;
+  }
+}
+
+.center {
+  text-align: center;
+}
+
+.center991 {
+  @media (max-width: 991px) {
+    text-align: center;
+    clear: both;
+  }
+}
+.center767 {
+  @media (max-width: 767px) {
+    text-align: center;
+    clear: both;
+  }
+}
+.center479 {
+  @media (max-width: 479px) {
+    text-align: center;
+    clear: both;
+  }
+}
+
+input {
+  outline: none;
+}
+
+input[type='submit'] {
+  cursor: pointer;
+}
+
+address {
+  dl {
+    @include clearfix();
+    & + dl {
+      margin-top: 10px;
+    }
+  }
+  dt {
+    display: block;
+    line-height: 20px;
+  }
+  dd {
+    display: block;
+    color: $primary;
+    font-weight: 600;
+    line-height: 20px;
+  }
+}
+
+/*=======================================================
+                       Main Layout
+=========================================================*/
+* + p {
+  margin-top: 18px;
+}
+
+.search + .sign-in {
+  margin-top: 7px;
+}
+
+* + .offs1 {
+  margin-top: 10px;
+}
+
+* + .offs2 {
+  margin-top: 20px;
+}
+
+* + .offs3 {
+  margin-top: 30px;
+}
+
+* + .offs4 {
+  margin-top: 40px;
+}
+
+* + .offs5 {
+  margin-top: 50px;
+}
+
+* + .offs6 {
+  margin-top: 60px;
+}
+
+* + .offs7 {
+  margin-top: 70px;
+}
+
+* + .offs8 {
+  margin-top: 80px;
+}
+
+* + .offs9 {
+  margin-top: 90px;
+}
+
+* + .offs10 {
+  margin-top: 100px;
+}
+
+/*=======================================================
+                        Components
+=========================================================*/
+/*==================     Icons     ======================*/
+.fa-facebook,
+.fa-twitter,
+.fa-google-plus,
+.fa-linkedin,
+.fa-vk,
+.fa-odnoklassniki {
+  text-align: center;
+  width: 25px;
+  height: 25px;
+  line-height: 25px;
+  color: $white;
+  @include transition(0.4s ease);
+}
+
+/*==================  Backgrounds  ======================*/
+.bg-primary {
+  background: $primary;
+}
+
+.bg-white {
+  background: $white;
+}
+
+.bg-black {
+  background: $black;
+}
+
+/*==================  Colors  ======================*/
+.white-color {
+  color: $white;
+}
+
+.default-color {
+  color: $default;
+}
+
+/*==================    Buttons    ======================*/
+.btn1 {
+  display: inline-block;
+  font: 300 14px/14px $default-font;;
+  color: $white;
+  text-decoration: none;
+  border: none;
+  padding: 13px 50px;
+  @include linearGradientTopToBottom(#ff0000, #ca0000);
+  @include border-radius(4px);
+  @include transition(0.4s ease);
+  text-align: center;
+  &:hover {
+    text-decoration: none;
+    color: $white;
+    @include linearGradientTopToBottom(#ff0000, #e10000);
+  }
+  &:active {
+    text-decoration: none;
+    color: $white;
+    @include linearGradientTopToBottom(#e10000, #c80000);
+  }
+}
+
+//====================== HEADER ======================//
+
+//==================    Imports    ======================
+//@import "_menu.scss";
+//@import "_lists.scss";
+//@import "_tabs.scss";
+//@import "_select-style.scss";
+//@import "_pagination.scss";
+//@import "_input-radio-checkbox.scss";
+//@import "_input-style.scss";
+//@import "_editable.scss";
+//@import "_thumb.scss";
+/*========================================================
+                     HEADER  Section
+=========================================================*/
+header {
+  background: $header-bg;
+}
+
+/*========================================================
+                     CONTENT  Section
+=========================================================*/
+main {
+  background: $content-bg;
+}
+
+/*==================      Well     ======================*/
+.well {
+}
+
+.well_hdr {
+  padding-top: 14px;
+  padding-bottom: 15px;
+}
+
+.well_ftr {
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
+
+/*========================================================
+                     FOOTER  Styles
+=========================================================*/
+footer {
+  background: $footer-bg;
+
+}
+
+/*========================================================
+                     Modal windows  Styles
+=========================================================*/
+.fancybox-wrap {
+  .fancybox-skin {
+    padding: 20px !important;
+    background: $white;
+  }
+}
+
+.modalWindow {
+  width: 460px;
+  height: auto;
+}
